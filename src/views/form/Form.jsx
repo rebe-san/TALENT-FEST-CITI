@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../../components/input/Input'
 
-
-
 class Form extends Component {
     state = {
         email: "",
