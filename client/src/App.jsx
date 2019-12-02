@@ -8,6 +8,8 @@ import Home from './views/home';
 import Form from './views/form/Form';
 import './App.css';
 
+require('dotenv').config()
+
 const App = () => {
   return (
     <Router>
