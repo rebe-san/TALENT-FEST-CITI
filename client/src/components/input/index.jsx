@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import './style.css';
 
 const Input = (props) => {
     const {
@@ -10,23 +11,23 @@ const Input = (props) => {
         autoComplete,
         margin,
         variant,
-        className,
         value,
         onChange
     } = props;
     return (
-        <TextField
-            id={id}
-            label={label}
-            type={type}
-            name={name}
-            autoComplete={autoComplete}
-            margin={margin}
-            variant={variant}
-            className={className}
-            value={value}
-            onChange={onChange}
-        />
+        
+            <TextField
+                id={id}
+                label={label}
+                type={type}
+                name={name}
+                autoComplete={autoComplete}
+                margin={margin}
+                variant={variant}
+                value={value}
+                onChange={onChange}
+            />
+        
     )
 
 }

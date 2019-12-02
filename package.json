@@ -30,5 +30,9 @@
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.7.13",
         "nodemon": "^2.0.1"
+    },
+    "devDependencies": {
+        "express-pino-logger": "^4.0.0",
+        "twilio": "^3.37.1"
     }
 }
