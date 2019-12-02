@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import Home from './views/home';
-import Form from './views/form/Form';
+import Form from './views/form/index';
 import './App.css';
 
 require('dotenv').config()
