@@ -4,14 +4,18 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Home from './views/home'
+import Home from './views/home';
+import Form from './views/form/Form';
 import './App.css';
 
-const App = () =>{
+require('dotenv').config()
+
+const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/"><Home/></Route>
+        <Route exact path="/"><Home /></Route>
+        <Route exact path="/formulario"><Form /></Route>
       </Switch>
     </Router>
   );
