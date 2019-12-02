@@ -18,15 +18,19 @@ class Form extends Component {
 
                 <Input
                     label="Nombre"
+                    name="name"
                 />
                 <Input
                     label="Apellidos"
+                    name="lastname"
                 />
                 <Input
                     label="Correo electrónico"
+                    name="email"
                 />
                 <Input
                     label="Contraseña"
+                    name="password"
                 />
                 <select name="genero" id="">
                     <option value="">Hombre</option>
