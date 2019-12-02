@@ -7,6 +7,8 @@ import {
 import Home from './views/home'
 import './App.css';
 
+require('dotenv').config()
+
 const App = () =>{
   return (
     <Router>
