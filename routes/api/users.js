@@ -60,4 +60,4 @@ router.post('/', (req, res) => {
     })
 });
 
-module.exports = route
+module.exports = router
