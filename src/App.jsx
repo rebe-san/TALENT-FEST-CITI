@@ -1,13 +1,19 @@
 import React from 'react';
-import Signature from './components/Signature'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Home from './views/home'
 import './App.css';
 
-function App() {
+const App = () =>{
   return (
-    <div className="App">
-      <h1>Aqui va nuestra app</h1>
-      <Signature/>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/"><Home/></Route>
+      </Switch>
+    </Router>
   );
 }
 
