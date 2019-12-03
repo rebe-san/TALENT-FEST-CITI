@@ -29,7 +29,19 @@ class Form extends Component {
                 <Input
                     label="Contraseña"
                     name="password"
+                    type="password"
                 />
+                <Input
+                    label="Confirmar contraseña"
+                    name="password"
+                    type="password"
+                />
+                <Input
+                    label="Teléfono"
+                    name="phone"
+                    type="number"
+                />
+                
                 <select name="genero" id="">
                     <option value="">Hombre</option>
                     <option value="">Mujer</option>
