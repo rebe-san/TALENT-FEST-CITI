@@ -8,9 +8,13 @@ class Form extends Component {
         super(props)
         this.state = {
             name:"",
+            nameColor: false,
             lastName: "",
+            lastNameColor: false,
             email: "",
+            emailColor: false,
             password: "",
+            passwordColor: false,
             password2:"",
             street: "",
             numExt: "",
@@ -20,15 +24,35 @@ class Form extends Component {
             phone:"",
             ID: ""
         }
-        this.handleNameChange = this.handleNameChange.bind(this);
     }
     
     handleNameChange = (e) => {
         this.setState({ name: e.target.value });
+        if(this.state.name.length > 1){
+            this.setState({nameColor: true})
+        }
     }
 
     handleLastNameChange = (e) => {
         this.setState({ lastName: e.target.value });
+        if(this.state.lastName.length > 1){
+            this.setState({lastNameColor: true})
+        }
+    }
+
+    handleEmailChange = (e) => {
+        this.setState({ email: e.target.value });
+        if(this.state.email.length > 1){
+            this.setState({emailColor: true})
+        }
+    }
+
+    handlePasswordChange = (e) => {
+        this.setState({ password: e.target.value });
+        console.log(this.state.password.length)
+        if(this.state.password.length > 5){
+            this.setState({passwordColor: true})
+        }
     }
     render() {
         return (
@@ -49,18 +73,23 @@ class Form extends Component {
                         name="name"
                         value={this.state.name}
                         onChange={this.handleNameChange}
+                        colorCheck={this.state.nameColor}
                     />
                     <Input
                         label="Apellidos"
                         type="text"
                         name="lastname"
                         value={this.state.lastName}
+                        onChange={this.handleLastNameChange}
+                        colorCheck={this.state.lastNameColor}
                     />
                     <Input
                         label="Correo electrónico"
                         type="email"
                         name="email"
                         value={this.state.email}
+                        onChange={this.handleEmailChange}
+                        colorCheck={this.state.emailColor}
                     />
                     <div className="select-container">
                         <Input
@@ -68,6 +97,8 @@ class Form extends Component {
                             type="password"
                             name="password"
                             value={this.state.password}
+                            onChange={this.handlePasswordChange}
+                            colorCheck={this.state.passwordColor}
                         />
                         <Input
                             label="Confirmar contraseña"
