@@ -13,7 +13,6 @@ const Home = () => {
       <figure>
         <img src={LogoCiti} alt="logo-citi" className="logo"/>
       </figure>
-
       <div className="row">
         <img src={Personita1} alt="persona-1" />
         <div className="box-mancha">

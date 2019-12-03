@@ -13,7 +13,7 @@ const User = require('../../models/User');
 // @desc    Register new user
 // @access  Public
 router.post('/', (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, lastname,email,password,street,num_ext,num_int, colonia,cp,phone,number_id,curp } = req.body;
 
   // Simple validation
   if(!name || !email || !password) {
@@ -27,8 +27,17 @@ router.post('/', (req, res) => {
       else{    
       const newUser = new User({
         name,
+        lastname,
         email,
-        password
+        password,
+        street,
+        num_ext, 
+        num_int,
+        colonia,
+        cp,
+        phone,
+        number_id,
+        curp
       });
 
       // Create salt & hash
@@ -49,7 +58,16 @@ router.post('/', (req, res) => {
                     user: {
                       id: user.id,
                       name: user.name,
-                      email: user.email
+                      email: user.email,
+                      lastname:user.lastname,
+                      street:user.street,
+                      num_ext:user.num_ext, 
+                      num_int:user.num_int,
+                      colonia:user.colonia,
+                      cp:user.cp,
+                      phone:user.phone,
+                      number_id:user.number_id,
+                      curp:user.curp
                     }
                   });
                 }

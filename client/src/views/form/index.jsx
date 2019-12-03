@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import Input from '../../components/input/index';
 import Logo from '../../assets/img/logoCiti.png';
+import axios from "axios";
 import {Link} from 'react-router-dom';
 import './style.css'
 import { throws } from 'assert';
-// import { runInThisContext } from 'vm';
-// import { threadId } from 'worker_threads';
 
 class Form extends Component {
-    constructor(props){
-        super(props)
+
+    constructor(){
+        super();
         this.state = {
+            name: "",
+            lastname:"",
+            email: "",
+            password: "",
+            street:"",
+            num_ext:"", 
+            num_int:"",
+            colonia:"",
+            cp:"",
+            phone:"",
+            number_id:"",
+            curp:"",
             name:"",
             nameColor: false,
             lastName: "",
@@ -38,7 +50,10 @@ class Form extends Component {
             IDNumberColor: false,
             CURP:"",
             CURPColor: false
-        }
+          };
+            //  This is necessary to make 'this' work in the callback
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     handleNameChange = (e) => {
@@ -69,15 +84,16 @@ class Form extends Component {
             this.setState({passwordColor: true})
         }
     }
+   
+       
 
     handleChangeStreet = (e) => {
-        console.log('hi')
         this.setState({street: e.target.value});
         if(this.state.street.length > 2){
             this.setState({streetColor: true})
         }
     }
-
+    
     handlePassword2Change = (e) => {
         this.setState({ password2: e.target.value });
         if(this.state.password2 !== this.state.password){
@@ -142,6 +158,47 @@ class Form extends Component {
         }
     }
 
+
+    handleSubmit = e => {
+        e.preventDefault();
+        const user = {
+          name: this.state.name,
+          lastname: this.state.lastname,
+          email: this.state.email,
+            password: this.state.password,
+            street:this.state.street,
+            num_ext:this.state.num_ext, 
+            num_int:this.state.num_int,
+            colonia:this.state.colonia,
+            cp:this.state.cp,
+            phone:this.state.phone,
+            number_id:this.state.number_id,
+            curp:this.state.curp
+        
+        };
+        axios.post("http://localhost:5000/api/users", user)
+          .then(res => {
+            this.setState({
+                name: "",
+                lastname:"",
+                email: "",
+                password: "",
+                street:"",
+                num_ext:"", 
+                num_int:"",
+                colonia:"",
+                cp:"",
+                phone:"",
+                number_id:"",
+                curp:""
+            });
+            this.props.history.push("/");
+          })
+          .catch(err => {
+            console.log("Error in CreateBook!");
+          });
+      };
+    
     render() {
         return (
             <main className="form">
@@ -154,7 +211,7 @@ class Form extends Component {
                     <span className="ball"></span>
                     <span className="ball"></span>
                 </div>
-                <section>
+                <form noValidate onSubmit={this.handleSubmit} >
                     <Input
                         label="Nombre"
                         type="text"
@@ -167,7 +224,7 @@ class Form extends Component {
                         label="Apellidos"
                         type="text"
                         name="lastname"
-                        value={this.state.lastName}
+                        value={this.state.lastname}
                         onChange={this.handleLastNameChange}
                         colorCheck={this.state.lastNameColor}
                     />
@@ -192,6 +249,7 @@ class Form extends Component {
                             label="Confirmar contraseña"
                             name="password"
                             type="password"
+
                             value={this.state.password2}
                             onChange={this.handlePassword2Change}
                             colorCheck={this.state.password2Color}
@@ -200,7 +258,8 @@ class Form extends Component {
                     <Input
                         label="Calle o Avenida"
                         type="text"
-                        name="name"
+                        name="street"
+                        value={this.state.street}
                         value={this.state.street}
                         onChange={this.handleChangeStreet}
                         colorCheck={this.state.streetColor}
@@ -209,16 +268,17 @@ class Form extends Component {
                         <Input
                             label="Número ext."
                             type="number"
-                            name="name"
-                            value={this.state.numExt}
+                            name="num_ext"
+                            value={this.state.num_ext}
                             onChange={this.handleNumExtChange}
                             colorCheck={this.state.numExtColor}
                         />
                         <Input
                             label="Número int."
                             type="number"
-                            name="name"
-                            value={this.state.numInt}
+                            name="num_int"
+                            value={this.state.num_int}
+                            onChange={this.handleChange}
                             onChange={this.handleNumIntChange}
                             colorCheck={this.state.numIntColor}
                         />
@@ -227,16 +287,16 @@ class Form extends Component {
                         <Input
                             label="Fraccionamiento o colonia"
                             type="text"
-                            name="name"
-                            value={this.state.colony}
+                            name="colonia"
+                            value={this.state.colonia}
                             onChange={this.handleColonyChange}
                             colorCheck={this.state.colonyColor}
                         />
                         <Input
                             label="C.P."
                             type="number"
-                            name="name"
-                            value={this.state.CP}
+                            name="cp"
+                            value={this.state.cp}
                             onChange={this.handleCPChange}
                             colorCheck={this.state.colorCheck}
                         />
@@ -260,17 +320,21 @@ class Form extends Component {
                         <Input
                             label="Numero de identificación"
                             type="number"
+                            name="number_id"
+                            value={this.state.number_id}
                             name="ine"
                             value={this.state.ID}
                             onChange={this.handleIDNumberChange}
                             colorCheck={this.state.IDNumber}
                         />
+
                     </div>
                     <Input
                         label="CURP"
                         type="text"
+                        name="curp"
+                        value={this.state.curp}
                         name="name"
-                        value={this.state.CURP}
                         onChange={this.handleCURPChange}
                         colorCheck={this.state.CURPColor}
                     />
@@ -290,6 +354,8 @@ class Form extends Component {
                             <option value="">Prefiero no decirlo</option>
                         </select>
                     </div>
+                    <input className="button" type="submit"/>
+                </form>
                 </section>
                 <footer className="footer-form">
                     <Link className="button back" to="/">Anterior</Link>
