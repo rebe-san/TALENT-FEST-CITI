@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js",
-        "server": "nodemon server.js"
+        "server": "nodemon server.js",
+        "heroku-postbuild": "cd client && npm install && npm run build"
     },
     "repository": {
         "type": "git",
@@ -36,5 +37,8 @@
     "devDependencies": {
         "express-pino-logger": "^4.0.0",
         "twilio": "^3.37.1"
-    }
+    },
+    "engines": {
+        "node": "10.16.2"
+      }
 }

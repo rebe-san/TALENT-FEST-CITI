@@ -160,7 +160,7 @@ class Form extends Component {
             curp:this.state.curp
         
         };
-        axios.post("http://localhost:5000/api/users", user)
+        axios.post("/api/users/", user)
           .then(res => {
             this.setState({
                 name: "",
@@ -244,7 +244,6 @@ class Form extends Component {
                         type="text"
                         name="street"
                         value={this.state.street}
-                        value={this.state.street}
                         onChange={this.handleChangeStreet}
                         colorCheck={this.state.streetColor}
                     />
@@ -305,7 +304,6 @@ class Form extends Component {
                             type="number"
                             name="number_id"
                             value={this.state.number_id}
-                            name="ine"
                             onChange={this.handleIDNumberChange}
                             colorCheck={this.state.IDNumber}
                         />
