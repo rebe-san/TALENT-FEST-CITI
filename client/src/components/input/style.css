@@ -1,3 +1,26 @@
-.input-form {
+.input-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     width: 100%;
+}
+
+.input-form {
+    width: 90%;
+}
+
+.white {
+    color: white;
+    font-size: 1rem;
+}
+
+.green {
+    color: greenyellow;
+    font-size: 1rem;
+}
+
+.footer-form {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
 }

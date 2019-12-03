@@ -7,6 +7,8 @@
 
 .header-form img {
     height: 4rem;
+    display: flex;
+    align-self: flex-start;
 }
 
 .form {
@@ -18,7 +20,7 @@
 }
 
 .form section {
-    width: 35%;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -33,7 +35,7 @@
 }
 
 .select-container {
-    width: 100%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
 }
@@ -47,8 +49,14 @@
     border: none;
     padding: 1rem;
     color: white;
+    text-decoration: none;
+    text-align: center;
     border-radius: 5px;
     background-color: #3abaed;
+}
+
+.back {
+    background-color: #8f9293;
 }
 
 .ball-container {
@@ -65,6 +73,6 @@
     border: 1px solid #C4C4C4;
 }
 
-.one {
+.filled {
     background-color: #C4C4C4;
 }

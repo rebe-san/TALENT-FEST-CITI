@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import TextField from '@material-ui/core/TextField';
+import { FaCheck } from "react-icons/fa";
 import './style.css';
 
 const Input = (props) => {
@@ -12,10 +13,11 @@ const Input = (props) => {
         margin,
         variant,
         value,
-        onChange
+        onChange,
+        colorCheck
     } = props;
     return (
-        
+        <label className="input-form-container">
             <TextField
                 id={id}
                 label={label}
@@ -26,10 +28,11 @@ const Input = (props) => {
                 variant={variant}
                 value={value}
                 onChange={onChange}
+                className="input-form"
             />
-        
+            <FaCheck className={`${colorCheck  ? 'green': 'white'}`}/>
+        </label>   
     )
-
 }
 
 export default Input;

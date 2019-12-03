@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import Input from '../../components/input/index';
 import Logo from '../../assets/img/logoCiti.png';
 import axios from "axios";
+import {Link} from 'react-router-dom';
 import './style.css'
+import { throws } from 'assert';
 
 class Form extends Component {
+
     constructor(){
         super();
         this.state = {
@@ -19,18 +22,142 @@ class Form extends Component {
             cp:"",
             phone:"",
             number_id:"",
-            curp:""
+            curp:"",
+            name:"",
+            nameColor: false,
+            lastName: "",
+            lastNameColor: false,
+            email: "",
+            emailColor: false,
+            password: "",
+            passwordColor: false,
+            password2:"",
+            password2Color: false,
+            street: "",
+            streetColor: false,
+            numExt: "",
+            numExtColor: false,
+            numInt: "",
+            numIntColor: false,
+            colony: "",
+            colonyColor: false,
+            CP: "",
+            CPColor: false,
+            phone:"",
+            phoneColor:false,
+            ID: "",
+            IDNumber: "",
+            IDNumberColor: false,
+            CURP:"",
+            CURPColor: false
           };
             //  This is necessary to make 'this' work in the callback
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
+    handleNameChange = (e) => {
+        this.setState({ name: e.target.value });
+        if(this.state.name.length > 1){
+            this.setState({nameColor: true})
+        }
+    }
+
+    handleLastNameChange = (e) => {
+        this.setState({ lastName: e.target.value });
+        if(this.state.lastName.length > 1){
+            this.setState({lastNameColor: true})
+        }
+    }
+
+    handleEmailChange = (e) => {
+        this.setState({ email: e.target.value });
+        if(this.state.email.length > 1){
+            localStorage.setItem("email", this.state.email)
+            this.setState({emailColor: true})
+        }
+    }
+
+    handlePasswordChange = (e) => {
+        this.setState({ password: e.target.value });
+        if(this.state.password.length > 5){
+            this.setState({passwordColor: true})
+        }
+    }
    
        
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+    handleChangeStreet = (e) => {
+        this.setState({street: e.target.value});
+        if(this.state.street.length > 2){
+            this.setState({streetColor: true})
+        }
     }
+    
+    handlePassword2Change = (e) => {
+        this.setState({ password2: e.target.value });
+        if(this.state.password2 !== this.state.password){
+            console.log('Tus contraseñas no son iguales')
+        }
+        if(this.state.password === this.state.password2){
+            this.setState({password2Color: true})
+        }
+    }
+
+    handleNumExtChange = (e) => {
+        this.setState({numExt: e.target.value});
+        if(this.state.numExt.length > 1){
+            this.setState({numExtColor: true})
+        }
+    }
+
+    handleNumIntChange = (e) => {
+        this.setState({numInt: e.target.value})
+        if(this.state.numInt.length > 0){
+            this.setState({numIntColor: true})
+        }
+    }
+
+    handleColonyChange = (e) => {
+        this.setState({colony: e.target.value})
+        if(this.state.colony.length > 1){
+            this.setState({colonyColor: true})
+        }
+    }
+
+    handleCPChange = (e) => {
+        this.setState({CP: e.target.value})
+        if(this.state.CP.length > 1){
+            this.setState({CPColor: true})
+        }
+    }
+
+    handlePhoneChange = (e) => {
+        this.setState({phone: e.target.value})
+        if(this.state.phone.length > 5){
+            this.setState({phoneColor: true})
+        }
+    }
+
+    handleIDChange =(e) => {
+        console.log(e.target.value)
+        this.setState({ID: e.target.value})
+    }
+
+    handleIDNumberChange = (e) => {
+        this.setState({IDNumber: e.target.value})
+        if(this.state.IDNumber.length > 9){
+            this.setState({IDNumberColor: true})
+        }
+    }
+
+    handleCURPChange = (e) => {
+        this.setState({CURP: e.target.value})
+        if(this.state.CURP.length === 18){
+            this.setState({CURPColor: true})
+        }
+    }
+
 
     handleSubmit = e => {
         e.preventDefault();
@@ -47,17 +174,9 @@ class Form extends Component {
             phone:this.state.phone,
             number_id:this.state.number_id,
             curp:this.state.curp
-        //   author: this.state.author,
-        //   description: this.state.description,
-        //   published_date: this.state.published_date,
-        //   publisher: this.state.publisher
+        
         };
-        // axios.post method to send an HTTP POST request to the back-end endpoint http://localhost:4000/api/books.
-        //  This endpoint is expecting to get the new book object in JSON format in the request body.
-        // Therefore we need to pass in the book object as a second argument.
-        axios
-          // .post("http://localhost:4000/api/books", book)
-                .post("http://localhost:5000/api/users", user)
+        axios.post("http://localhost:5000/api/users", user)
           .then(res => {
             this.setState({
                 name: "",
@@ -78,11 +197,8 @@ class Form extends Component {
           .catch(err => {
             console.log("Error in CreateBook!");
           });
-        // console.log(`Form submitted:`);
-        // console.log(`${user.name}`)
-        // console.log(`${user.lastname}`)
-
       };
+    
     render() {
         return (
             <main className="form">
@@ -91,9 +207,9 @@ class Form extends Component {
                     <h2>Registra tus datos</h2>
                 </header>
                 <div className="ball-container">
-                    <span className="one ball"></span>
-                    <span className="two ball"></span>
-                    <span className="three ball"></span>
+                    <span className="filled ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
                 </div>
                 <form noValidate onSubmit={this.handleSubmit} >
                     <Input
@@ -101,21 +217,24 @@ class Form extends Component {
                         type="text"
                         name="name"
                         value={this.state.name}
-                        onChange={this.handleChange}
+                        onChange={this.handleNameChange}
+                        colorCheck={this.state.nameColor}
                     />
                     <Input
                         label="Apellidos"
                         type="text"
                         name="lastname"
                         value={this.state.lastname}
-                        onChange={this.handleChange}
+                        onChange={this.handleLastNameChange}
+                        colorCheck={this.state.lastNameColor}
                     />
                     <Input
                         label="Correo electrónico"
                         type="email"
                         name="email"
                         value={this.state.email}
-                        onChange={this.handleChange}
+                        onChange={this.handleEmailChange}
+                        colorCheck={this.state.emailColor}
                     />
                     <div className="select-container">
                         <Input
@@ -123,13 +242,17 @@ class Form extends Component {
                             type="password"
                             name="password"
                             value={this.state.password}
-                            onChange={this.handleChange}
+                            onChange={this.handlePasswordChange}
+                            colorCheck={this.state.passwordColor}
                         />
                         <Input
                             label="Confirmar contraseña"
                             name="password"
                             type="password"
-                            
+
+                            value={this.state.password2}
+                            onChange={this.handlePassword2Change}
+                            colorCheck={this.state.password2Color}
                         />
                     </div>
                     <Input
@@ -137,7 +260,9 @@ class Form extends Component {
                         type="text"
                         name="street"
                         value={this.state.street}
-                        onChange={this.handleChange}
+                        value={this.state.street}
+                        onChange={this.handleChangeStreet}
+                        colorCheck={this.state.streetColor}
                     />
                     <div className="select-container">
                         <Input
@@ -145,7 +270,8 @@ class Form extends Component {
                             type="number"
                             name="num_ext"
                             value={this.state.num_ext}
-                            onChange={this.handleChange}
+                            onChange={this.handleNumExtChange}
+                            colorCheck={this.state.numExtColor}
                         />
                         <Input
                             label="Número int."
@@ -153,6 +279,8 @@ class Form extends Component {
                             name="num_int"
                             value={this.state.num_int}
                             onChange={this.handleChange}
+                            onChange={this.handleNumIntChange}
+                            colorCheck={this.state.numIntColor}
                         />
                     </div>
                     <div className="select-container">
@@ -161,14 +289,16 @@ class Form extends Component {
                             type="text"
                             name="colonia"
                             value={this.state.colonia}
-                            onChange={this.handleChange}
+                            onChange={this.handleColonyChange}
+                            colorCheck={this.state.colonyColor}
                         />
                         <Input
                             label="C.P."
                             type="number"
                             name="cp"
                             value={this.state.cp}
-                            onChange={this.handleChange}
+                            onChange={this.handleCPChange}
+                            colorCheck={this.state.colorCheck}
                         />
                     </div>
                     <Input
@@ -176,22 +306,26 @@ class Form extends Component {
                         name="phone"
                         type="number"
                         value={this.state.phone}
-                        onChange={this.handleChange}
+                        onChange={this.handlePhoneChange}
+                        colorCheck={this.state.phoneColor}
                     />
                     <div className="select-container">
-                        <select name="genero" id="" className="drops">
-                                <option value="">Selecciona tu Identificación</option>
-                                <option value="">INE</option>
-                                <option value="">IFE</option>
-                                <option value="">Licencia para conducir</option>
-                                <option value="">Pasaporte mexicano</option>
+                        <select name="genero" id="" className="drops" onChange={this.handleIDChange}>
+                                <option value="ID">Selecciona tu Identificación</option>
+                                <option value="INE">INE</option>
+                                <option value="IFE">IFE</option>
+                                <option value="LIC">Licencia para conducir</option>
+                                <option value="PASSPORT">Pasaporte mexicano</option>
                         </select>
                         <Input
                             label="Numero de identificación"
                             type="number"
                             name="number_id"
                             value={this.state.number_id}
-                            onChange={this.handleChange}
+                            name="ine"
+                            value={this.state.ID}
+                            onChange={this.handleIDNumberChange}
+                            colorCheck={this.state.IDNumber}
                         />
 
                     </div>
@@ -200,7 +334,9 @@ class Form extends Component {
                         type="text"
                         name="curp"
                         value={this.state.curp}
-                        onChange={this.handleChange}
+                        name="name"
+                        onChange={this.handleCURPChange}
+                        colorCheck={this.state.CURPColor}
                     />
                     <p className="curp">Si no conoces tu CURP, puedes obtenerlo en esta <a href="https://www.gob.mx/curp/" target="_blank">liga</a> </p>                    
                     <div className="select-container">
@@ -220,6 +356,11 @@ class Form extends Component {
                     </div>
                     <input className="button" type="submit"/>
                 </form>
+                </section>
+                <footer className="footer-form">
+                    <Link className="button back" to="/">Anterior</Link>
+                    <Link className="button" to="/verificar-correo">Siguiente</Link>
+                </footer>
             </main>
 
         );
