@@ -58,6 +58,7 @@ class Form extends Component {
     handleEmailChange = (e) => {
         this.setState({ email: e.target.value });
         if(this.state.email.length > 1){
+            localStorage.setItem("email", this.state.email)
             this.setState({emailColor: true})
         }
     }
@@ -292,7 +293,7 @@ class Form extends Component {
                 </section>
                 <footer className="footer-form">
                     <Link className="button back" to="/">Anterior</Link>
-                    <Link className="button">Siguiente</Link>
+                    <Link className="button" to="/verificar-correo">Siguiente</Link>
                 </footer>
             </main>
 
