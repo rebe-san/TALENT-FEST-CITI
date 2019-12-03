@@ -17,7 +17,7 @@ const Input = (props) => {
         colorCheck
     } = props;
     return (
-        <div className="input-form-container">
+        <label className="input-form-container">
             <TextField
                 id={id}
                 label={label}
@@ -31,7 +31,7 @@ const Input = (props) => {
                 className="input-form"
             />
             <FaCheck className={`${colorCheck  ? 'green': 'white'}`}/>
-        </div>   
+        </label>   
     )
 }
 

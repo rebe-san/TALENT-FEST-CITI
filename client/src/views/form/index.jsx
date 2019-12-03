@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Input from '../../components/input/index';
 import Logo from '../../assets/img/logoCiti.png';
+import {Link} from 'react-router-dom';
 import './style.css'
+import { throws } from 'assert';
+// import { runInThisContext } from 'vm';
+// import { threadId } from 'worker_threads';
 
 class Form extends Component {
     constructor(props){
@@ -16,13 +20,24 @@ class Form extends Component {
             password: "",
             passwordColor: false,
             password2:"",
+            password2Color: false,
             street: "",
+            streetColor: false,
             numExt: "",
+            numExtColor: false,
             numInt: "",
+            numIntColor: false,
             colony: "",
+            colonyColor: false,
             CP: "",
+            CPColor: false,
             phone:"",
-            ID: ""
+            phoneColor:false,
+            ID: "",
+            IDNumber: "",
+            IDNumberColor: false,
+            CURP:"",
+            CURPColor: false
         }
     }
     
@@ -49,11 +64,83 @@ class Form extends Component {
 
     handlePasswordChange = (e) => {
         this.setState({ password: e.target.value });
-        console.log(this.state.password.length)
         if(this.state.password.length > 5){
             this.setState({passwordColor: true})
         }
     }
+
+    handleChangeStreet = (e) => {
+        console.log('hi')
+        this.setState({street: e.target.value});
+        if(this.state.street.length > 2){
+            this.setState({streetColor: true})
+        }
+    }
+
+    handlePassword2Change = (e) => {
+        this.setState({ password2: e.target.value });
+        if(this.state.password2 !== this.state.password){
+            console.log('Tus contraseñas no son iguales')
+        }
+        if(this.state.password === this.state.password2){
+            this.setState({password2Color: true})
+        }
+    }
+
+    handleNumExtChange = (e) => {
+        this.setState({numExt: e.target.value});
+        if(this.state.numExt.length > 1){
+            this.setState({numExtColor: true})
+        }
+    }
+
+    handleNumIntChange = (e) => {
+        this.setState({numInt: e.target.value})
+        if(this.state.numInt.length > 0){
+            this.setState({numIntColor: true})
+        }
+    }
+
+    handleColonyChange = (e) => {
+        this.setState({colony: e.target.value})
+        if(this.state.colony.length > 1){
+            this.setState({colonyColor: true})
+        }
+    }
+
+    handleCPChange = (e) => {
+        this.setState({CP: e.target.value})
+        if(this.state.CP.length > 1){
+            this.setState({CPColor: true})
+        }
+    }
+
+    handlePhoneChange = (e) => {
+        this.setState({phone: e.target.value})
+        if(this.state.phone.length > 5){
+            this.setState({phoneColor: true})
+        }
+    }
+
+    handleIDChange =(e) => {
+        console.log(e.target.value)
+        this.setState({ID: e.target.value})
+    }
+
+    handleIDNumberChange = (e) => {
+        this.setState({IDNumber: e.target.value})
+        if(this.state.IDNumber.length > 9){
+            this.setState({IDNumberColor: true})
+        }
+    }
+
+    handleCURPChange = (e) => {
+        this.setState({CURP: e.target.value})
+        if(this.state.CURP.length === 18){
+            this.setState({CURPColor: true})
+        }
+    }
+
     render() {
         return (
             <main className="form">
@@ -105,6 +192,8 @@ class Form extends Component {
                             name="password"
                             type="password"
                             value={this.state.password2}
+                            onChange={this.handlePassword2Change}
+                            colorCheck={this.state.password2Color}
                         />
                     </div>
                     <Input
@@ -112,6 +201,8 @@ class Form extends Component {
                         type="text"
                         name="name"
                         value={this.state.street}
+                        onChange={this.handleChangeStreet}
+                        colorCheck={this.state.streetColor}
                     />
                     <div className="select-container">
                         <Input
@@ -119,11 +210,16 @@ class Form extends Component {
                             type="number"
                             name="name"
                             value={this.state.numExt}
+                            onChange={this.handleNumExtChange}
+                            colorCheck={this.state.numExtColor}
                         />
                         <Input
                             label="Número int."
                             type="number"
                             name="name"
+                            value={this.state.numInt}
+                            onChange={this.handleNumIntChange}
+                            colorCheck={this.state.numIntColor}
                         />
                     </div>
                     <div className="select-container">
@@ -131,37 +227,51 @@ class Form extends Component {
                             label="Fraccionamiento o colonia"
                             type="text"
                             name="name"
+                            value={this.state.colony}
+                            onChange={this.handleColonyChange}
+                            colorCheck={this.state.colonyColor}
                         />
                         <Input
                             label="C.P."
                             type="number"
                             name="name"
+                            value={this.state.CP}
+                            onChange={this.handleCPChange}
+                            colorCheck={this.state.colorCheck}
                         />
                     </div>
                     <Input
                         label="Teléfono"
                         name="phone"
                         type="number"
+                        value={this.state.phone}
+                        onChange={this.handlePhoneChange}
+                        colorCheck={this.state.phoneColor}
                     />
                     <div className="select-container">
-                        <select name="genero" id="" className="drops">
-                                <option value="">Selecciona tu Identificación</option>
-                                <option value="">INE</option>
-                                <option value="">IFE</option>
-                                <option value="">Licencia para conducir</option>
-                                <option value="">Pasaporte mexicano</option>
+                        <select name="genero" id="" className="drops" onChange={this.handleIDChange}>
+                                <option value="ID">Selecciona tu Identificación</option>
+                                <option value="INE">INE</option>
+                                <option value="IFE">IFE</option>
+                                <option value="LIC">Licencia para conducir</option>
+                                <option value="PASSPORT">Pasaporte mexicano</option>
                         </select>
                         <Input
                             label="Numero de identificación"
                             type="number"
                             name="ine"
                             value={this.state.ID}
+                            onChange={this.handleIDNumberChange}
+                            colorCheck={this.state.IDNumber}
                         />
                     </div>
                     <Input
                         label="CURP"
                         type="text"
                         name="name"
+                        value={this.state.CURP}
+                        onChange={this.handleCURPChange}
+                        colorCheck={this.state.CURPColor}
                     />
                     <p className="curp">Si no conoces tu CURP, puedes obtenerlo en esta <a href="https://www.gob.mx/curp/" target="_blank">liga</a> </p>                    
                     <div className="select-container">
@@ -180,7 +290,10 @@ class Form extends Component {
                         </select>
                     </div>
                 </section>
-                    <button className="button">Siguiente</button>
+                <footer className="footer-form">
+                    <Link className="button back" to="/">Anterior</Link>
+                    <Link className="button">Siguiente</Link>
+                </footer>
             </main>
 
         );

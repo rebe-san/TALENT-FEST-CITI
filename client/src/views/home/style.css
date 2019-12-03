@@ -4,10 +4,22 @@
     box-sizing: 0;
 }
 
-.row {
+.row,
+.billete {
     display: flex;
     flex-direction: row;
     margin: 20px;
+}
+
+.row img {
+    height: 350px;
+    width: 350px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.billete img {
+    height: 250px;
 }
 
 .img-home {
@@ -18,13 +30,13 @@
 .text-home {
     position: absolute;
     z-index: 1;
+    width: 500px;
 }
 
 .box-mancha {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    /* border:solid 1px red; */
     width: 60%;
 }
 
@@ -64,4 +76,17 @@
     display: flex;
     width: 90%;
     justify-content: flex-end;
+}
+
+.logo {
+    height: 65px;
+}
+
+.home {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+    color: #414141;
 }

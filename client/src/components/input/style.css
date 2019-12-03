@@ -18,3 +18,9 @@
     color: greenyellow;
     font-size: 1rem;
 }
+
+.footer-form {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+}

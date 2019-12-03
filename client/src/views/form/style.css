@@ -7,6 +7,8 @@
 
 .header-form img {
     height: 4rem;
+    display: flex;
+    align-self: flex-start;
 }
 
 .form {
@@ -47,8 +49,14 @@
     border: none;
     padding: 1rem;
     color: white;
+    text-decoration: none;
+    text-align: center;
     border-radius: 5px;
     background-color: #3abaed;
+}
+
+.back {
+    background-color: #8f9293;
 }
 
 .ball-container {
