@@ -4,13 +4,31 @@ import Logo from '../../assets/img/logoCiti.png';
 import './style.css'
 
 class Form extends Component {
-    state = {
-        email: "",
-        password: "",
+    constructor(props){
+        super(props)
+        this.state = {
+            name:"",
+            lastName: "",
+            email: "",
+            password: "",
+            password2:"",
+            street: "",
+            numExt: "",
+            numInt: "",
+            colony: "",
+            CP: "",
+            phone:"",
+            ID: ""
+        }
+        this.handleNameChange = this.handleNameChange.bind(this);
+    }
+    
+    handleNameChange = (e) => {
+        this.setState({ name: e.target.value });
     }
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+    handleLastNameChange = (e) => {
+        this.setState({ lastName: e.target.value });
     }
     render() {
         return (
@@ -20,48 +38,56 @@ class Form extends Component {
                     <h2>Registra tus datos</h2>
                 </header>
                 <div className="ball-container">
-                    <span className="one ball"></span>
-                    <span className="two ball"></span>
-                    <span className="three ball"></span>
+                    <span className="filled ball"></span>
+                    <span className="ball"></span>
+                    <span className="ball"></span>
                 </div>
                 <section>
                     <Input
                         label="Nombre"
                         type="text"
                         name="name"
+                        value={this.state.name}
+                        onChange={this.handleNameChange}
                     />
                     <Input
                         label="Apellidos"
                         type="text"
                         name="lastname"
+                        value={this.state.lastName}
                     />
                     <Input
                         label="Correo electrónico"
                         type="email"
                         name="email"
+                        value={this.state.email}
                     />
                     <div className="select-container">
                         <Input
                             label="Contraseña"
                             type="password"
                             name="password"
+                            value={this.state.password}
                         />
                         <Input
                             label="Confirmar contraseña"
                             name="password"
                             type="password"
+                            value={this.state.password2}
                         />
                     </div>
                     <Input
                         label="Calle o Avenida"
                         type="text"
                         name="name"
+                        value={this.state.street}
                     />
                     <div className="select-container">
                         <Input
                             label="Número ext."
                             type="number"
                             name="name"
+                            value={this.state.numExt}
                         />
                         <Input
                             label="Número int."
@@ -98,6 +124,7 @@ class Form extends Component {
                             label="Numero de identificación"
                             type="number"
                             name="ine"
+                            value={this.state.ID}
                         />
                     </div>
                     <Input

@@ -1,61 +1,67 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: 0;
-
 }
 
-.row{
-display: flex;
-flex-direction: row;
-margin:20px;
-}
-
-.img-home{
-    position: absolute;
-    z-index:-1;
-}
-
-.text-home{
-    position:absolute;
-    z-index:1;
-   
-} 
-
-.box-mancha{
+.row {
     display: flex;
-    justify-content:flex-end;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.img-home {
+    position: absolute;
+    z-index: -1;
+}
+
+.text-home {
+    position: absolute;
+    z-index: 1;
+}
+
+.box-mancha {
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
     /* border:solid 1px red; */
     width: 60%;
 }
 
-.box-mancha p{
-  font-size: 25px;
-  margin-right: 100px;
-  font-family: 'Open Sans', sans-serif;
-}
-.space{
-    display: flex;
-    justify-content:space-around;
+.box-mancha p {
+    font-size: 25px;
+    margin-right: 100px;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.text{
+.space {
+    display: flex;
+    justify-content: space-around;
+}
+
+.text {
     font-size: 25px;
     margin-right: 190px;
     font-family: 'Open Sans', sans-serif;
 }
 
-.box-mancha-2{
+.box-mancha-2 {
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
     align-items: center;
     /* border:solid 1px red; */
     width: 60%;
 }
 
-.box-mancha-2 p{
-  font-size: 25px;
-  margin-right: 100px;
-  font-family: 'Open Sans', sans-serif;
+.box-mancha-2 p {
+    font-size: 25px;
+    margin-right: 100px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.button-footer {
+    padding: 2rem;
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
 }

@@ -35,9 +35,11 @@ const Home = () => {
           <p className="text-home"> Activa tu cuenta con solo $50.00</p>
         </div>
       </div>
-      <button>
-      <Link className="button">Abre tu cuenta al instante</Link>
-      </button>
+      <div className="button-footer">
+
+        <Link className="button" to="/formulario">Abre tu cuenta al instante</Link>
+      </div>
+      
     </main>
   )
 
