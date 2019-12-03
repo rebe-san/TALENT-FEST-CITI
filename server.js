@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 const path = require('path');
 const config = require('config');
 const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
+const cors = require("cors");
+
+
 
 const app = express();
 require("dotenv").config();
 // Bodyparser Middleware
 app.use(express.json());
-
+app.use(cors());
 // DB Config
 const db = config.get('mongoURI');
 
@@ -27,7 +29,7 @@ mongoose
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(pino);
+
 
 app.get('/api/greeting', (req, res) => {
     const name = req.query.name || 'World';
