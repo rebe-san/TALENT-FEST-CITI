@@ -1,0 +1,78 @@
+.header-form {
+    padding: 0.5rem;
+    text-align: center;
+    color: #414141;
+    width: 90%;
+}
+
+.header-form img {
+    height: 4rem;
+    display: flex;
+    align-self: flex-start;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form section {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.drops {
+    height: 2.5rem;
+    margin: 0.5rem 0;
+    width: 45%;
+    color: #414141;
+}
+
+.select-container {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.curp {
+    font-size: 0.7rem;
+}
+
+.button {
+    width: 10rem;
+    border: none;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #3abaed;
+}
+
+.back {
+    background-color: #8f9293;
+}
+
+.ball-container {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 3rem;
+}
+
+.ball {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 100%;
+    border: 1px solid #C4C4C4;
+}
+
+.filled {
+    background-color: #C4C4C4;
+}
