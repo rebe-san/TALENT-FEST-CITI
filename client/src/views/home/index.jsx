@@ -4,6 +4,7 @@ import Personita2 from '../../assets/img/personita2.svg';
 import LogoCiti from '../../assets/img/logociti.svg';
 import Mancha1 from '../../assets/img/manchita1.svg';
 import Mancha2 from '../../assets/img/manchita2.svg';
+import {Link} from 'react-router-dom';
 import './style.css'
 
 const Home = () => {
@@ -20,8 +21,8 @@ const Home = () => {
           <p className="text-home"> Obten tu cuenta sin necesidad de salir de casa</p>
         </div>
       </div> 
-      <div className="row space">
-        <div className="box-mancha">
+      <div className="row">
+        <div className="box-mancha-2">
           <img className="img-home" src={Mancha2} alt="mancha-1"/>
           <p className="text-home">La primera cuenta de debito con puntos premia</p>
         </div>
@@ -30,11 +31,13 @@ const Home = () => {
       <div className="row">
         <img src={Personita1} alt="persona-1" />
         <div className="box-mancha">
-          <img className="img-home" src={Mancha2} alt="mancha-2" />
-          <p className="text-home"> Obten tu cuenta sin necesidad de salir de casa</p>
+          <img className="img-home" src={Mancha1} alt="mancha-2" />
+          <p className="text-home"> Activa tu cuenta con solo $50.00</p>
         </div>
       </div>
-
+      <button>
+      <Link className="button">Abre tu cuenta al instante</Link>
+      </button>
     </main>
   )
 }
